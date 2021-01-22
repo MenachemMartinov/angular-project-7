@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const config = require("config")
+const config = require("config");
 const mongoose = require("mongoose");
 
 // connect to mongo server
@@ -13,8 +13,7 @@ mongoose
   .then(() => console.log("connected to mongo"))
   .catch((err) => console.error("FAIL: could not connect to mongo", err));
 
-
-  app.use(require("morgan")("dev"));
+app.use(require("morgan")("dev"));
 // parse json body in case request's content-type is application/json
 app.use(express.json());
 
@@ -31,4 +30,4 @@ app.get("*", (req, res) => {
   res.redirect("/");
 });
 const PORT = 3006;
-app.listen(PORT, () => console.log(`click http://localhost:${PORT}`));
+app.listen(() => console.log(`click http://localhost:${PORT}`));
