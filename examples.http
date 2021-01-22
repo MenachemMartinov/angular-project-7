@@ -1,0 +1,56 @@
+@local = http://localhost:3005
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDAzY2U3MDUyNDQ2NzdkNzQxYmNiNzciLCJiaXoiOmZhbHNlLCJpYXQiOjE2MTA4NjY2NzZ9.EU1WWwBDz5ZyWJtggq5U2e7NJuDgE-XGC59AvNVzRLA
+@token2 = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI0MjBlNGQxZTBiOTA1NGNjYWViNzYiLCJiaXoiOnRydWUsImlhdCI6MTYwNTY0MDQzMX0.O4pXGNuEX09UEN9OLI8ZEwAAc-YbU8hI5lAE7Miqz0o
+
+### create user
+POST {{local}}/api/users
+Content-Type: application/json
+
+{
+    "name": "daniel",
+    "email": "a@a.com",
+    "password": "Aa123456",
+    "biz": true
+}
+
+### signin user
+POST {{local}}/api/auth
+Content-Type: application/json
+
+{
+    "email": "ab@a.com", 
+    "password": "Aa123456"
+}
+
+### my information
+GET {{local}}/api/users/my-details
+auth-token: {{token}}
+
+### create card
+POST {{local}}/api/cards
+Content-Type: application/json
+x-auth-token: {{token}}
+
+{
+    "bizName": "Lemon",
+    "bizDescription": "lemonade made with fresh lemons",
+    "bizAddress": "lemon av.",
+    "bizPhone": "0254574558"
+}
+
+### get card
+@cardId = 5fb42094b63afa04e9f22456
+GET {{local}}/api/cards/{{cardId}}
+x-auth-token: {{token}}
+
+### update card
+PUT {{local}}/api/cards/{{cardId}}
+Content-Type: application/json
+x-auth-token: {{token}}
+
+{
+    "bizName": "12223332",
+    "bizDescription": "lemonade made with fresh lemons",
+    "bizAddress": "lemon av.",
+    "bizPhone": "0254574558"
+}
