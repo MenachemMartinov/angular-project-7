@@ -30,4 +30,4 @@ app.get("*", (req, res) => {
   res.redirect("/");
 });
 const PORT = process.env.PORT || 3006;
-app.listen(() => console.log(`click http://localhost:${PORT}`));
+app.listen(PORT ,() => console.log(`click http://localhost:${PORT}`));
