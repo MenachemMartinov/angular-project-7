@@ -29,5 +29,5 @@ app.use("/api/cards", cardsRouter);
 app.get("*", (req, res) => {
   res.redirect("/");
 });
-const PORT = 3006;
+const PORT = process.env.PORT || 3006;
 app.listen(() => console.log(`click http://localhost:${PORT}`));
